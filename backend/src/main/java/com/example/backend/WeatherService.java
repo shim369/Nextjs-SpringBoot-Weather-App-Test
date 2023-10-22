@@ -10,7 +10,7 @@ public class WeatherService {
     @Value("${openweather.api.key}")
     private String openWeatherApiKey;
     
-    private final String openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
+    private final String openWeatherApiUrl = "http://api.openweathermap.org/data/2.5/weather";
 
     private final RestTemplate restTemplate;
 
@@ -19,8 +19,9 @@ public class WeatherService {
     }
 
     public WeatherData getWeatherData(String city) {
-        String url = openWeatherApiUrl + "?q=" + city + "&appid=" + openWeatherApiKey;
+        String url = openWeatherApiUrl + "?q=" + city + "&units=metric&appid=" + openWeatherApiKey;
         WeatherData response = restTemplate.getForObject(url, WeatherData.class);
         return response;
-    }    
+    }
+    
 }

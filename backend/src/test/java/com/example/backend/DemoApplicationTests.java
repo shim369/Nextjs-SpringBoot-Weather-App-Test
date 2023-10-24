@@ -13,7 +13,7 @@ class DemoApplicationTests {
 
     @Test
     void testGetWeatherData() {
-        WeatherData weatherData = weatherService.getWeatherData("London,uk");
+        WeatherData weatherData = weatherService.getWeatherData("London");
 
         assertEquals("Clouds", weatherData.getDescription());
         assertEquals(281.36, weatherData.getTemperature(), 0.01);

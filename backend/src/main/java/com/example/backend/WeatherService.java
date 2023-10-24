@@ -8,18 +8,18 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherService {
     
     @Value("${openweather.api.key}")
-    private String openWeatherApiKey;
+    private String apiToken;
     
-    private final String openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
+    String openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
 
-    private final RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     public WeatherService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     public WeatherData getWeatherData(String city) {
-        String url = openWeatherApiUrl + "?q=" + city + "&units=metric&appid=" + openWeatherApiKey;
+        String url = openWeatherApiUrl + "?q=" + city + "&units=metric&appid=" + apiToken;
         WeatherData response = restTemplate.getForObject(url, WeatherData.class);
         return response;
     }

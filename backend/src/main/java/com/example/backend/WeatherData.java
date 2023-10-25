@@ -1,22 +1,20 @@
 package com.example.backend;
 
 public class WeatherData {
-    private String description;
-    private double temperature;
+    private String response;
 
-    public String getDescription() {
-        return description;
+    public String getResponse() {
+        return response;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
+    @Override
+    public String toString() {
+        return "WeatherData{" +
+                "response='" + response + '\'' +
+                '}';
     }
 }

@@ -48,9 +48,9 @@ export default function Home() {
 
   return (
     <div>
-      <h1>取得した天気情報:</h1>
+      <h1>取得した天気情報</h1>
       <div>
-        <label>国を選択:</label>
+        <label>国を選択</label>
         <select value={country} onChange={handleCountryChange}>
           {countries.map((c, index) => (
             <option key={index} value={c}>
@@ -60,7 +60,7 @@ export default function Home() {
         </select>
       </div>
       <div>
-        <label>都市を選択:</label>
+        <label>都市を選択</label>
         <select value={city} onChange={handleCityChange}>
           {citiesForSelectedCountry.map((c, index) => (
             <option key={index} value={c}>

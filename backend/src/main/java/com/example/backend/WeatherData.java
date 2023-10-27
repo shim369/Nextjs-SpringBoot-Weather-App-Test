@@ -10,11 +10,4 @@ public class WeatherData {
     public void setResponse(String response) {
         this.response = response;
     }
-
-    @Override
-    public String toString() {
-        return "WeatherData{" +
-                "response='" + response + '\'' +
-                '}';
-    }
 }

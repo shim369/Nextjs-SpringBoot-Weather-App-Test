@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState, useEffect, ChangeEvent } from 'react';
 
 export default function Home() {
@@ -24,8 +23,29 @@ export default function Home() {
     try {
       const response = await fetch(`http://localhost:8080/api/weather?city=${city}&country=${country}`);
       if (response.status === 200) {
-        const weatherData = await response.json();
-        setData(JSON.stringify(weatherData, null, 2));
+        const responseData = await response.json();
+        const weatherData = JSON.parse(responseData.response);
+
+        const mainWeather = weatherData.weather[0].main;
+        const description = weatherData.weather[0].description;
+        const minTempKelvin = weatherData.main.temp_min;
+        const maxTempKelvin = weatherData.main.temp_max;
+        const sunriseUnixTimestamp = weatherData.sys.sunrise;
+        const sunsetUnixTimestamp = weatherData.sys.sunset;
+
+        const minTempCelsius = (minTempKelvin - 273.15).toFixed(2);
+        const maxTempCelsius = (maxTempKelvin - 273.15).toFixed(2);
+
+        const sunriseTime = new Date(sunriseUnixTimestamp * 1000).toLocaleTimeString();
+        const sunsetTime = new Date(sunsetUnixTimestamp * 1000).toLocaleTimeString();
+
+        const displayText = `Weather: ${mainWeather} - ${description}
+        Min Temperature: ${minTempCelsius} °C
+        Max Temperature: ${maxTempCelsius} °C
+        Sunrise: ${sunriseTime}
+        Sunset: ${sunsetTime}`;
+
+        setData(displayText);
       } else {
         console.error('API エラー:', response.statusText);
       }

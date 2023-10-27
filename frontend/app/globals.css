@@ -24,3 +24,9 @@ p {
 label {
   margin-right: .3rem;
 }
+.whiteSpace {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: break-spaces;
+}

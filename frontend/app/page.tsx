@@ -39,11 +39,7 @@ export default function Home() {
         const sunriseTime = new Date(sunriseUnixTimestamp * 1000).toLocaleTimeString();
         const sunsetTime = new Date(sunsetUnixTimestamp * 1000).toLocaleTimeString();
 
-        const displayText = `Weather: ${mainWeather} - ${description}
-        Min Temperature: ${minTempCelsius} °C
-        Max Temperature: ${maxTempCelsius} °C
-        Sunrise: ${sunriseTime}
-        Sunset: ${sunsetTime}`;
+        const displayText = `Weather: ${mainWeather} - ${description}\nMin Temperature: ${minTempCelsius} °C\nMax Temperature: ${maxTempCelsius} °C\nSunrise: ${sunriseTime}\nSunset: ${sunsetTime}`;
 
         setData(displayText);
       } else {
@@ -89,7 +85,7 @@ export default function Home() {
           ))}
         </select>
       </div>
-      <p>{data}</p>
+      <div className='whiteSpace'>{data}</div>
     </div>
   );
 }
